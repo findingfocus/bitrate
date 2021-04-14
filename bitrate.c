@@ -10,72 +10,64 @@ int main (void) {
 	fourthDigit = 0;
 	fifthDigit = 0;
 	sixthDigit = 0;
-/*
-	printf("Enter Duration hh:mm:ss\n");
-	printf("Enter hh\n");
+
+	char filetype;
+	float filesize;
+	float megabytes;
+	float gigabytes;
+	float megabits;
+	float bitrate;
+	double totalSeconds;
+
+	printf("Enter Duration hh:mm:ss\nEnter hh\n");
 
 	scanf("%i", &hours);
-	//printf("First Pair is %i\n", firstPair);
 
 	printf("Enter mm\n");
 	scanf("%i", &minutes);
-	//printf("Second Pair is %i\n", secondPair);
 
 	printf("Enter ss\n");
 	scanf("%i", &seconds);
-	//printf("Third Pair is %i\n", thirdPair);
 
 	//Separate second digit from first digit
 	secondDigit = hours % 10;
 	hours = hours / 10;
 	firstDigit = hours % 10;
-	//printf("First digit is %i\nSecond digit is %i\n", firstDigit, secondDigit);
 
 	fourthDigit = minutes % 10;
 	minutes = minutes / 10;
 	thirdDigit = minutes % 10;
-	//printf("Third digit is %i\nFourth digit is %i\n", thirdDigit, fourthDigit);
 
 	sixthDigit = seconds % 10;
 	seconds = seconds / 10;
 	fifthDigit = seconds % 10;
-	//printf("Fifth digit is %i\nSixth digit is %i\n", fifthDigit, sixthDigit);
 
+	//Calculate total seconds given duration
+	totalSeconds = firstDigit * 36000 + secondDigit * 3600 + thirdDigit * 600 + fourthDigit * 60 + fifthDigit * 10 + sixthDigit;
+	//printf("TOTAL SECONDS IS %f\n", totalSeconds);
 
-
-*/
-
-	//Receives Filesize
-
-	//ask to input until answer is either g or m,
-	char filetype;
-	float filesize;
-	float megabytes;
-	float gigabytes;
-
+	//Receive Filesize
 	do {
 		printf("Filesize: Enter g for gigabytes or m for megabytes\n");
 		scanf(" %c", &filetype);
 	} while (filetype != 'm' && filetype != 'g');
+	//asks to input until answer is either m or g,
 
 	if (filetype == 'm')
 	{
 		printf("How many megabytes?\n");
 		scanf("%f", &megabytes);
-		printf("%.2f megabytes\n", megabytes);
+		megabits = megabytes * 8;
 	}
 	if (filetype == 'g')
 	{
 		printf("How many gigabytes?\n");
 		scanf("%f", &gigabytes);
-		printf("%.2f gigabytes\n", gigabytes);
+		megabytes = gigabytes * 1000;
+		megabits = megabytes * 8;
 	}
-	//printf("exit\n");
-
-
-
-
-
-
-	//Converts Final Desired size and Duration for Target MBps
+	//final fun :))
+	bitrate = megabits / totalSeconds;
+	printf("Bitrate is about %.2fMbps\n", bitrate);
+	return 0;
 }
