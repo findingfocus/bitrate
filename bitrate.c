@@ -2,7 +2,7 @@
 #include <ctype.h>
 
 int main (void) {
-	//Converts Duration and Filesize into MBps
+	//Converts Duration and Filesize into megabits per second
 	int firstDigit, secondDigit, thirdDigit, fourthDigit, fifthDigit, sixthDigit, hours, minutes, seconds;
 	firstDigit = 0;
 	secondDigit = 0;
@@ -66,7 +66,7 @@ int main (void) {
 		megabytes = gigabytes * 1000;
 		megabits = megabytes * 8;
 	}
-	//final fun :))
+	//final fun :)
 	bitrate = megabits / totalSeconds;
 	printf("Bitrate is about %.2fMbps\n", bitrate);
 	return 0;
