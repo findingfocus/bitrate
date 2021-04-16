@@ -44,29 +44,27 @@ int main (void) {
 
 	//Calculate total seconds given duration
 	totalSeconds = firstDigit * 36000 + secondDigit * 3600 + thirdDigit * 600 + fourthDigit * 60 + fifthDigit * 10 + sixthDigit;
-	//printf("TOTAL SECONDS IS %f\n", totalSeconds);
 
 	//Receive Filesize
 	do {
 		printf("Filesize: Enter g for gigabytes or m for megabytes\n");
 		scanf(" %c", &filetype);
 	} while (filetype != 'm' && filetype != 'g');
-	//asks to input until answer is either m or g,
 
 	if (filetype == 'm')
 	{
 		printf("How many megabytes?\n");
 		scanf("%f", &megabytes);
-		megabits = megabytes * 8;
 	}
 	if (filetype == 'g')
 	{
 		printf("How many gigabytes?\n");
 		scanf("%f", &gigabytes);
 		megabytes = gigabytes * 1000;
-		megabits = megabytes * 8;
 	}
-	//final fun :)
+
+	//Logic to find bitrate of given file
+	megabits = megabytes * 8;
 	bitrate = megabits / totalSeconds;
 	printf("Bitrate is about %.2fMbps\n", bitrate);
 	return 0;
