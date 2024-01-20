@@ -1,6 +1,6 @@
 # bitrate
 
-An application to calculate the bitrate of video files
+An application to calculate the bitrate of video files.
 
 #### Terminal Instructions
 ```
